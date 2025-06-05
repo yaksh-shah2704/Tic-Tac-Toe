@@ -1,0 +1,32 @@
+/* * { */
+    /* background-color:bisque; */
+/* } */
+
+/* .header {
+    background-color: yellow;
+}
+
+button {
+    cursor: pointer;
+    color: #fff;
+    background-color: black;
+} */
+
+/* .box {
+    height: 200px;
+    width: 200px;
+    border: 2px solid maroon;
+    margin: 5px;
+    text-align: start;
+    background-color: aquamarine;
+} */
+
+.para {
+    color: rgb(255, 0, 0);
+}
+
+.para2 {
+    background-color: bisque;
+    font-size: 1.2rem;
+    font-style: oblique;
+}
