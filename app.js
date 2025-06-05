@@ -28,6 +28,7 @@ let msgContainer = document.querySelector(".msg-container");
 let msg = document.querySelector("#msg");
 
 let turn0 = true;    //playerX, playerY
+let moveCount = 0;  //To check draw condition
 
 const winPatterns = [
     [0, 1, 2],
@@ -42,6 +43,7 @@ const winPatterns = [
 
 const resetGame = () => {
     turn0 = true;
+    moveCount = 0;
     enableBoxes();
     msgContainer.classList.add("hide");
 };
@@ -50,12 +52,14 @@ boxes.forEach((box) => {
     box.addEventListener("click", () => {
         if (turn0) {    //playerX
             box.innerText = "X";
-            turn0 = false;
+            box.style.color = "blue";
         } else {    //player0
             box.innerText = "0";
-            turn0 = true;
+            box.style.color = "maroon";
         }
+        turn0 = !turn0;
         box.disabled = true;
+        moveCount++;
 
         checkWinner();
     });
@@ -75,7 +79,7 @@ const enableBoxes = () => {
 };
 
 const showWinner = (winner) => {
-    msg.innerText = `Congratulations, Winner is ${winner}`;
+    msg.innerText = `🎉 Congratulations, Winner is ${winner}`;
     msgContainer.classList.remove("hide");
     disableBoxes();
 };
@@ -89,7 +93,12 @@ const checkWinner = () => {
         if(pos1Val != "" && pos2Val != "" && pos3Val != "") {
             if (pos1Val === pos2Val && pos2Val === pos3Val) {
                 showWinner(pos1Val);
+                return;
             }
+        }
+        if(moveCount === 9) {
+            msg.innerText = "🤝 It's a Draw!";
+            msgContainer.classList.remove("hide");
         }
     }
 };
